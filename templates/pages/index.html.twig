@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Boutique de Parfums{% endblock %}
+
+{% block body %}
+    
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ asset('images/vie.jpg') }}" class="card-img-top" alt="Parfum Élégance">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Parfum Élégance</h5>
+                    <p class="card-text">Un parfum raffiné aux notes florales.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ asset('images/rouge.jpg') }}" class="card-img-top" alt="Parfum Intense">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Parfum Intense</h5>
+                    <p class="card-text">Un parfum profond et sensuel.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ asset('images/zara.jpg') }}" class="card-img-top" alt="Parfum Fraîcheur">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Parfum Fraîcheur</h5>
+                    <p class="card-text">Une senteur légère et vivifiante.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ path('app_about') }}" class="btn btn-outline-primary">À propos</a>
+    </div>
+{% endblock %}

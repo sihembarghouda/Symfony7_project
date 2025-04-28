@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bienvenue sur notre boutique en ligne</h1>
+    
+    <div class="produits-container">
+        {% for produit in produits %}
+            <div class="card">
+                <img src="{{ produit.image }}" alt="{{ produit.nom }}">
+                <h2>{{ produit.nom }}</h2>
+                <p>Prix : {{ produit.prix }} €</p>
+                <button class="ajouter-panier">Ajouter au panier</button>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
