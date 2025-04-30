@@ -15,15 +15,17 @@ class Produit
 
     #[ORM\Column(length: 255)]
     private ?string $products = null;
+
     #[ORM\Column(type: 'string')]
-    private string $nom;
+    private ?string $nom = null;
 
     #[ORM\Column(type: 'float')]
-    private float $prix;
+    private ?float $prix = null;
 
     #[ORM\Column(type: 'string')]
-    private string $image;
-public function getId(): ?int
+    private ?string $image = null;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,6 +38,42 @@ public function getId(): ?int
     public function setProducts(string $products): static
     {
         $this->products = $products;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): static
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }
