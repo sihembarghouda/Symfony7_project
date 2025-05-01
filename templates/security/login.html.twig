@@ -1,7 +1,43 @@
-<form method="post">
-    <label>Email :</label>
-    <input type="email" name="_username" required>
-    <label>Mot de passe :</label>
-    <input type="password" name="_password" required>
-    <button type="submit">Se connecter</button>
-</form>
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Connexion</h2>
+
+                        <form method="post">
+                            <div class="mb-3">
+                                <label for="_username" class="form-label">Email</label>
+                                <input type="email" name="_username" id="_username" class="form-control" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="_password" class="form-label">Mot de passe</label>
+                                <input type="password" name="_password" id="_password" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="_remember_me">
+                                <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                        </form>
+
+                        {% if error %}
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

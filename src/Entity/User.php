@@ -90,7 +90,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_USER'; // default role
         return array_unique($roles);
     }
 
@@ -139,5 +139,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->isVerified = $isVerified;
         return $this;
+    }
+
+    // Méthode __toString() pour une représentation conviviale
+    public function __toString(): string
+    {
+        return $this->prenom . ' ' . $this->nom;
     }
 }

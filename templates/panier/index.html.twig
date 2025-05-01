@@ -2,14 +2,31 @@
 
 {% block body %}
     <h1>Votre Panier</h1>
+    
     {% if panier is empty %}
         <p>Votre panier est vide.</p>
     {% else %}
-        {% for produit in panier %}
-            <div class="panier-item">
-                <h2>{{ produit.nom }}</h2>
-                <p>Quantité : {{ produit.quantite }}</p>
-            </div>
-        {% endfor %}
+        <div class="panier-items">
+            {% set total = 0 %}
+            {% for produit in panier %}
+                <div class="panier-item mb-4">
+                    <h2>{{ produit.nom }}</h2>
+                    <p>Quantité : {{ produit.quantite }}</p>
+                    <p>Prix unitaire : {{ produit.prix }} €</p>
+                    <p>Prix total pour cet article : {{ produit.prix * produit.quantite }} €</p>
+                    
+                    <!-- Lien pour modifier la quantité -->
+                    <a href="{{ path('cart_update_quantity', {'id': produit.id}) }}" class="btn btn-warning btn-sm">Modifier la quantité</a>
+                    
+                    <!-- Lien pour supprimer l'article -->
+                    <a href="{{ path('cart_remove', {'id': produit.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                </div>
+                
+                {% set total = total + (produit.prix * produit.quantite) %}
+            {% endfor %}
+            
+            <h3>Total du panier : {{ total }} €</h3>
+            <a href="{{ path('checkout') }}" class="btn btn-success">Passer à la caisse</a>
+        </div>
     {% endif %}
 {% endblock %}

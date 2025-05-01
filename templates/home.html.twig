@@ -1,16 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Bienvenue sur notre boutique en ligne</h1>
-    
-    <div class="produits-container">
-        {% for produit in produits %}
-            <div class="card">
-                <img src="{{ produit.image }}" alt="{{ produit.nom }}">
-                <h2>{{ produit.nom }}</h2>
-                <p>Prix : {{ produit.prix }} €</p>
-                <button class="ajouter-panier">Ajouter au panier</button>
-            </div>
-        {% endfor %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 text-white">Bienvenue sur notre boutique en ligne</h1>
+        
+        <div class="row">
+            {% for produit in produits %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ produit.image }}" alt="{{ produit.nom }}" class="card-img-top" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ produit.nom }}</h5>
+                            <p class="card-text text-center">Prix : {{ produit.prix }} €</p>
+                            <div class="text-center">
+                                <button class="btn btn-primary ajouter-panier" data-produit-id="{{ produit.id }}">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
+    <!-- Style CSS pour la mise en page -->
+    <style>
+        .produits-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .card {
+            border-radius: 8px;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .ajouter-panier {
+            width: 100%;
+            font-size: 16px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .ajouter-panier:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+    </style>
 {% endblock %}

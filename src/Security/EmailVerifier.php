@@ -22,17 +22,17 @@ class EmailVerifier
 
     public function sendEmailConfirmation(string $userEmail, string $token): void
     {
-        // Génère l'URL de confirmation de l'email
+        // Génère l'URL de confirmation d'email avec le token pour le lien de vérification
         $url = $this->router->generate('app_verify_email', [
             'token' => $token
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        // Crée l'email
+        // Crée l'email à envoyer
         $email = (new Email())
-            ->from('noreply@ecommerce.com') // Modifie cette adresse si besoin
-            ->to($userEmail)
-            ->subject('Please Confirm your Email')
-            ->html("<p>Click <a href=\"$url\">here</a> to confirm your email address.</p>");
+            ->from('noreply@ecommerce.com') // Adresse email de l'expéditeur
+            ->to($userEmail) // Adresse email du destinataire
+            ->subject('Please Confirm your Email') // Sujet de l'email
+            ->html("<p>Click <a href=\"$url\">here</a> to confirm your email address.</p>"); // Corps de l'email
 
         // Envoie l'email
         $this->mailer->send($email);

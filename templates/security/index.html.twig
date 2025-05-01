@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SecurityController!{% endblock %}
+{% block title %}Sécurisé - Contrôleur de sécurité{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    h1 { font-size: 2rem; }
+    ul { font-size: 1.2rem; }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Bienvenue sur la page de sécurité, {{ controller_name }} ! ✅</h1>
 
-    This friendly message is coming from:
+    <p>Cette information provient de :</p>
     <ul>
-        <li>Your controller at <code>C:/Users/sihem/Desktop/Symfony/e-commerce/src/Controller/SecurityController.php</code></li>
-        <li>Your template at <code>C:/Users/sihem/Desktop/Symfony/e-commerce/templates/security/index.html.twig</code></li>
+        <li>Votre contrôleur à <code>{{ controller_path }}</code></li>
+        <li>Votre modèle à <code>{{ template_path }}</code></li>
     </ul>
 </div>
 {% endblock %}

@@ -11,12 +11,16 @@
         <ul class="list-group mb-3">
             {% for item in items %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ item.product.nom }} - {{ item.quantity }} x {{ item.product.prix }} €
-                    <a href="{{ path('cart_add', {'id': produit.id}) }}" class="btn btn-primary">Acheter</a>
+                    {{ item.product.nom }} - {{ item.quantity }} x {{ item.product.prix }} € 
+                    <!-- Le lien pour ajouter un produit -->
+                    <a href="{{ path('cart_add', {'id': item.product.id}) }}" class="btn btn-primary">Acheter</a>
+                    <!-- Lien pour modifier la quantité d'un produit -->
                     <a href="{{ path('cart_update', {'id': item.product.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                    <!-- Affichage de la quantité -->
                     <span class="badge bg-secondary rounded-pill">{{ item.quantity }}</span>
-                    <span class="badge bg-secondary rounded-pill">{{ item.product.prix * item.quantity }} €</span>  
-                    
+                    <!-- Calcul du prix total pour cet article -->
+                    <span class="badge bg-secondary rounded-pill">{{ item.product.prix * item.quantity }} €</span>
+                    <!-- Lien pour supprimer un produit du panier -->
                     <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
                 </li>
             {% endfor %}

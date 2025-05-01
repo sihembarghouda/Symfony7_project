@@ -40,7 +40,9 @@ class UserTypeForm extends AbstractType
                     ]),
                 ],
             ])
-            ->add('email')
+            ->add('email', null, [
+                'label' => 'Email',
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

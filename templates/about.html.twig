@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div style="text-align: center; padding: 40px;">
+    <div class="container text-center py-5">
         <!-- Titre principal -->
-        
+        <h1 class="mb-4">À propos de notre boutique</h1>
 
         <!-- Paragraphe de présentation en gras -->
         <p style="font-weight: bold; color: black; max-width: 700px; margin: 0 auto 20px auto;">
@@ -11,10 +11,10 @@
         </p>
 
         <!-- Signature -->
-       
+        <p style="font-style: italic; color: #555;">L'équipe de votre parfumerie de luxe</p>
 
         <!-- Bouton retour -->
-        <a href="{{ path('app_home') }}" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 6px; transition: background 0.3s;">
+        <a href="{{ path('app_home') }}" class="btn btn-primary mt-4">
             Retour à l'accueil
         </a>
     </div>
